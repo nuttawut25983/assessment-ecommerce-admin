@@ -8,6 +8,7 @@ export const usePaginationStore = create<PaginationStore, any>(
     pagination: {
       pageIndex: 0,
       pageSize: 10,
+      sortField: 'id',
       ascending: true,
       totalPage: 0,
       firstPage: false,

@@ -55,6 +55,7 @@ const Brand = () => {
     if (res.status === 200) {
       const { content, pageable, totalPages, first, last } = res.data;
       setProducts(content);
+      console.log(pagination);
       setPagination({
         ...pagination,
         pageIndex: pageable.pageNumber,
@@ -62,6 +63,8 @@ const Brand = () => {
         totalPage: totalPages,
         firstPage: first,
         lastPage: last,
+        ascending: ascending,
+        sortField: sortField,
       });
     } else {
       Swal.fire({
@@ -77,12 +80,15 @@ const Brand = () => {
 
   const handleSort = (field: string) => {
     setSortField(field);
-    setAscending(!ascending);
+    if (sortField == field) {
+      console.log('setAscending', !ascending);
+      setAscending(!ascending);
+    }
     fetchData({
-      pageIndex: 0,
+      pageIndex: pagination.pageIndex,
       pageSize: pagination.pageSize,
       sortField: field,
-      ascending: !ascending,
+      ascending: ascending,
     });
   };
   useEffect(() => {

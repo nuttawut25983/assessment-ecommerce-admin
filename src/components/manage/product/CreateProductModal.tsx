@@ -170,10 +170,6 @@ const CreateProductModal = ({
                 id="imageUrl"
                 className="w-full"
                 {...register('imageUrl', {
-                  required: {
-                    value: true,
-                    message: 'กรุณาระบุ URL รูปภาพ',
-                  },
                   pattern: {
                     value: /^(ftp|http|https):\/\/[^ "]+$/,
                     message: 'URL รูปภาพไม่ถูกต้อง',
@@ -181,8 +177,9 @@ const CreateProductModal = ({
                 })}
                 onChange={(e) => setImageUrl(e.target.value)}
               />
-              <TextError errors={errors} name="imageUrl" />
+              {errors.imageUrl && <TextError errors={errors} name="imageUrl" />}
             </div>
+
             <div className="input__list">
               <Label htmlFor="name" className="text-right">
                 ชื่อ

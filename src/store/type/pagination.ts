@@ -10,7 +10,7 @@ export type PaginationItemState = {
   totalPage: number;
   firstPage: boolean;
   lastPage: boolean;
-  sortField?: string;
+  sortField: string;
 };
 
 export type PaginationState = {
@@ -22,6 +22,7 @@ export const initialPaginationState: PaginationState = {
     pageIndex: 0,
     pageSize: 1,
     ascending: true,
+    sortField: 'id',
     totalPage: 0,
     firstPage: false,
     lastPage: false,

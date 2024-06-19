@@ -4,6 +4,7 @@ const nextConfig = {
      swcMinify: true,
      trailingSlash: false,
      images: {
+          unoptimized: true, // เพิ่มบรรทัดนี้
           domains: [
                'localhost',
                'cdn.runrepeat.com',

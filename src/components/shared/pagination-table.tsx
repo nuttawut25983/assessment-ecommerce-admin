@@ -20,11 +20,13 @@ interface PaginationTableProps {
 const PaginationTable = ({ fetch }: PaginationTableProps) => {
   const pagination = usePaginationStore((state) => state.pagination);
   const pageSizeOptions = [10, 20, 50, 100];
+  console.log(pagination);
 
   const handlePageSizeChange = (value: number) => {
     fetch({
       pageIndex: 0,
       pageSize: value,
+      sortField: pagination.sortField,
       ascending: pagination.ascending,
     });
   };
@@ -33,6 +35,7 @@ const PaginationTable = ({ fetch }: PaginationTableProps) => {
     fetch({
       pageIndex: pagination.pageIndex + 1,
       pageSize: pagination.pageSize,
+      sortField: pagination.sortField,
       ascending: pagination.ascending,
     });
   };
@@ -41,6 +44,7 @@ const PaginationTable = ({ fetch }: PaginationTableProps) => {
     fetch({
       pageIndex: pagination.pageIndex - 1,
       pageSize: pagination.pageSize,
+      sortField: pagination.sortField,
       ascending: pagination.ascending,
     });
   };
